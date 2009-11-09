@@ -1,4 +1,4 @@
-class String
+String.class_eval do
   def to_boolean
     case self
     when 'true'
@@ -11,17 +11,17 @@ class String
   end
 end
 
-class Hash
+Hash.class_eval do
   def symbolize_keys
     inject({}) do |options, (key, value)|
       options[(key.to_sym rescue key) || key] = value
       options
     end
-  end
+  end unless method_defined?(:symbolize_keys)
 
   def symbolize_keys!
     self.replace(self.symbolize_keys)
-  end
+  end unless method_defined?(:symbolize_keys!)
 
   def assert_has_keys(*valid_keys)
     missing_keys = [valid_keys].flatten - keys
