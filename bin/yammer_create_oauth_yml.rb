@@ -29,7 +29,7 @@ ARGV.options do |o|
   
   o.on("-o", "--outfile=[val]", String,
        "Yaml output file",
-       "Default: #{OPTIONS[:outfile]}")     { |OPTIONS[:outfile]| }
+       "Default: #{OPTIONS[:outfile]}")     { |outfile| OPTIONS[:outfile] }
   o.on("-k", "--key=val", String,
        "Consumer key for Yammer app")       { |key| OPTIONS[:key] = key}
   o.on("-s", "--secret=val", String,
