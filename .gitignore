@@ -2,3 +2,6 @@
 *.swo
 *.gem
 oauth.yml
+.bundle
+.bin
+
