@@ -19,6 +19,15 @@ module Yammer
         Yammer::MessageList.new(ml, older_available, self)
     end
 
+    # search everyting
+    def search(string, params = {})
+      raise "you must provide a string to do a search" if string.nil?
+      params.merge!(:resource => :search)
+      params.merge!(:search => string)
+      parsed_response = JSON.parse(yammer_request(:get, params).body)
+      mash(parsed_response)
+    end
+
     # POST or DELETE a message
     def message(action, params)
       params.merge!(:resource => :messages)
