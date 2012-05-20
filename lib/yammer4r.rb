@@ -21,3 +21,6 @@ require 'yammer/token_client'
 require 'yammer/message'
 require 'yammer/message_list'
 require 'yammer/user'
+require 'yammer/attributable'
+require 'yammer/topic'
+
