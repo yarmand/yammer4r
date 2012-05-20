@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
-  s.name    = 'pmoran-yammer4r'
-  s.version = '0.1.5'
-  s.date    = '2009-12-29'
+  s.name    = 'yammer4r'
+  s.version = '0.2.0'
+  s.date    = '2012-05-16'
 
   s.summary = "Yammer access for ruby"
   s.description = "Yammer4R provides an object based API to query or update your Yammer account via pure Ruby.  It hides the ugly HTTP/REST code from your code."
