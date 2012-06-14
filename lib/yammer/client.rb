@@ -50,46 +50,9 @@ module Yammer
     end
     alias_method :me, :current_user
 
-    private
-
-    def yammer_request(http_method, options)
-      request_uri = @api_path + options.delete(:resource).to_s
-      [:action, :id].each {|k| request_uri += "/#{options.delete(k)}" if options.has_key?(k) }
-      request_uri += ".json"
-
-      if options.any?
-        request_uri += "?#{create_query_string(options)}" unless http_method == :post
-      end
-
-      if http_method == :post
-        handle_response(@access_token.send(http_method, request_uri, options))
-      else
-        handle_response(@access_token.send(http_method, request_uri))
-      end
-    end
-
-    def create_query_string(options)
-      options.map {|k, v| "#{OAuth::Helper.escape(k)}=#{OAuth::Helper.escape(v)}"}.join('&')
-    end
-
-    def mash(json)
-      Mash.new(json)
-    end
-
-    def handle_response(response)
-      # TODO: Write classes for exceptions
-      case response.code.to_i
-        when 200..201
-          response
-        when 400
-          raise "400 Bad request"
-        when 401
-          raise  "Authentication failed. Check your username and password"
-        when 503
-          raise "503: Service Unavailable"
-        else
-          raise "Error. HTTP Response #{response.code}"
-        end   
+    def raw_request(resource,options = {})
+      options.merge!({:resource => resource})
+      yammer_request(:get,options)
     end
 
   end

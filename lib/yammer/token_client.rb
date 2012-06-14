@@ -13,10 +13,6 @@ module Yammer
       @access_token = options[:token]
     end
 
-    def raw_request(resource,options = {})
-      options.merge!({:resource => resource})
-      yammer_request(:get,options)
-    end
 
     private
 
