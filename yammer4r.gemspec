@@ -19,9 +19,13 @@ Gem::Specification.new do |s|
                bin/yammer_create_oauth_yml.rb
                lib/yammer4r.rb
                lib/yammer/client.rb
+               lib/yammer/attributable.rb
                lib/yammer/message.rb
+               lib/yammer/oauth_client.rb
+               lib/yammer/token_client.rb
                lib/yammer/message_list.rb
                lib/yammer/user.rb
+               lib/yammer/topic.rb
                lib/ext/core_ext.rb
                spec/spec_helper.rb
                spec/yammer/client_spec.rb)
